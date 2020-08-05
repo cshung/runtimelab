@@ -1,0 +1,1 @@
+C:\dev\runtime\artifacts\tests\coreclr\windows.x64.Debug\JIT\Regression\JitBlue\Runtime_66089\Runtime_66089\Runtime_66089.cmd

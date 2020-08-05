@@ -1,0 +1,1 @@
+call C:\dev\runtime\artifacts\tests\coreclr\windows.x64.Debug\JIT\Regression\JitBlue\Runtime_66089\Runtime_66089\Runtime_66089.cmd -debug c:\toolssw\debuggers\amd64\windbg.exe
