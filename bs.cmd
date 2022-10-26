@@ -5,7 +5,7 @@ if "%ANDREW_OPTIMIZED%"=="1" (
 ) else (
   set ANDREW_ARCH_PART=
 )
-pushd src\tests\GC\Stress\Framework
+pushd src\tests\baseservices\threading\greenthreads\delay
 call %~dp0dotnet.cmd build %ANDREW_ARCH_PART%
 popd
 endlocal
