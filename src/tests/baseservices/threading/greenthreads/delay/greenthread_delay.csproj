@@ -5,4 +5,11 @@
   <ItemGroup>
     <Compile Include="simple.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="debuggee.script"> <CopyToOutputDirectory>Always</CopyToOutputDirectory> </Content>
+    <Content Include="debugger.script"> <CopyToOutputDirectory>Always</CopyToOutputDirectory> </Content>
+    <Content Include="lun.cmd">         <CopyToOutputDirectory>Always</CopyToOutputDirectory> </Content>
+    <Content Include="run.cmd">         <CopyToOutputDirectory>Always</CopyToOutputDirectory> </Content>
+    <Content Include="win.cmd">         <CopyToOutputDirectory>Always</CopyToOutputDirectory> </Content>
+  </ItemGroup>
 </Project>
