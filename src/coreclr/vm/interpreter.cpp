@@ -23,6 +23,18 @@
 #include "vars.hpp"
 #include "cycletimer.h"
 
+#ifndef _I64_MIN
+#define _I64_MIN LLONG_MIN
+#endif
+
+#ifndef _I64_MAX
+#define _I64_MAX LLONG_MAX
+#endif
+
+#ifndef _UI64_MAX
+#define _UI64_MAX ULLONG_MAX
+#endif
+
 inline CORINFO_CALLINFO_FLAGS combine(CORINFO_CALLINFO_FLAGS flag1, CORINFO_CALLINFO_FLAGS flag2)
 {
     return (CORINFO_CALLINFO_FLAGS) (flag1 | flag2);
@@ -6843,17 +6855,6 @@ void Interpreter::SetILInstrCategories()
 }
 #endif // INTERP_ILINSTR_PROFILE
 
-#ifndef TARGET_WINDOWS
-namespace
-{
-    bool isnan(float val)
-    {
-        UINT32 bits = *reinterpret_cast<UINT32*>(&val);
-        return (bits & 0x7FFFFFFFU) > 0x7F800000U;
-    }
-}
-#endif
-
 template<int op>
 void Interpreter::CompareOp()
 {
@@ -12315,13 +12316,13 @@ void Interpreter::PrintValue(InterpreterType it, BYTE* valAddr)
 
     case CORINFO_TYPE_NATIVEINT:
         {
-            INT64 val = static_cast<INT64>(*reinterpret_cast<NativeInt*>(valAddr));
+            long long val = static_cast<long long>(*reinterpret_cast<NativeInt*>(valAddr));
             fprintf(GetLogFile(), "%lld (= 0x%llx)", val, val);
         }
         break;
     case CORINFO_TYPE_NATIVEUINT:
         {
-            UINT64 val = static_cast<UINT64>(*reinterpret_cast<NativeUInt*>(valAddr));
+            unsigned long long val = static_cast<unsigned long long>(*reinterpret_cast<NativeUInt*>(valAddr));
             fprintf(GetLogFile(), "%lld (= 0x%llx)", val, val);
         }
         break;
@@ -12332,12 +12333,12 @@ void Interpreter::PrintValue(InterpreterType it, BYTE* valAddr)
 
     case CORINFO_TYPE_LONG:
         {
-            INT64 val = *reinterpret_cast<INT64*>(valAddr);
+            long long val = *reinterpret_cast<long long*>(valAddr);
             fprintf(GetLogFile(), "%lld (= 0x%llx)", val, val);
         }
         break;
     case CORINFO_TYPE_ULONG:
-        fprintf(GetLogFile(), "%lld", *reinterpret_cast<UINT64*>(valAddr));
+        fprintf(GetLogFile(), "%lld", *reinterpret_cast<unsigned long long*>(valAddr));
         break;
 
     case CORINFO_TYPE_CLASS:
